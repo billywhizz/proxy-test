@@ -1,0 +1,122 @@
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<style>
+	#container {
+			min-width: 300px;
+			max-width: 800px;
+			height: 300px;
+			margin: 1em auto;
+	}	
+	</style>
+	<div id="rps"></div>
+	<div id="latency"></div>
+	<script type="text/javascript">
+	Highcharts.chart('rps', {
+  "title": {
+    "text": "Throughput (RPS)"
+  },
+  "xAxis": {
+    "categories": [
+      "no host specified",
+      "no api found",
+      "api with no plugins",
+      "api with jwt auth, no auth header",
+      "api with jwt auth, basic auth header",
+      "api with jwt auth, bad bearer token",
+      "api with jwt auth, bad signature",
+      "api with jwt auth, good request"
+    ]
+  },
+  "yAxis": {
+    "title": {
+      "text": "rps"
+    },
+    "tickInterval": 5000
+  },
+  "series": [
+    {
+      "name": "kong",
+      "data": [
+        19206,
+        19403,
+        9783,
+        10974,
+        9420,
+        7373,
+        7264,
+        4582
+      ],
+      "type": "column"
+    },
+    {
+      "name": "node",
+      "data": [
+        24082,
+        29783,
+        8011,
+        16634,
+        16412,
+        16190,
+        11841,
+        5554
+      ],
+      "type": "column"
+    }
+  ]
+});
+	Highcharts.chart('latency', {
+  "title": {
+    "text": "Average Latency"
+  },
+  "xAxis": {
+    "categories": [
+      "no host specified",
+      "no api found",
+      "api with no plugins",
+      "api with jwt auth, no auth header",
+      "api with jwt auth, basic auth header",
+      "api with jwt auth, bad bearer token",
+      "api with jwt auth, bad signature",
+      "api with jwt auth, good request"
+    ]
+  },
+  "yAxis": {
+    "title": {
+      "text": "usec"
+    },
+    "tickInterval": 100
+  },
+  "series": [
+    {
+      "name": "kong",
+      "data": [
+        5390,
+        5300,
+        10310,
+        9130,
+        10750,
+        13760,
+        13820,
+        21910
+      ],
+      "type": "column"
+    },
+    {
+      "name": "node",
+      "data": [
+        4190,
+        3420,
+        12480,
+        6020,
+        6110,
+        6190,
+        8450,
+        18010
+      ],
+      "type": "column"
+    }
+  ]
+});
+	</script>
+	

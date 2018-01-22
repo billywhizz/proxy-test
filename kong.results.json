@@ -1,0 +1,61 @@
+{
+  "url": "http://172.17.0.1:8000/",
+  "results": [
+    {
+      "name": "no host specified",
+      "results": {
+        "rps": 19206,
+        "latency": 5390
+      }
+    },
+    {
+      "name": "no api found",
+      "results": {
+        "rps": 19403,
+        "latency": 5300
+      }
+    },
+    {
+      "name": "api with no plugins",
+      "results": {
+        "rps": 9783,
+        "latency": 10310
+      }
+    },
+    {
+      "name": "api with jwt auth, no auth header",
+      "results": {
+        "rps": 10974,
+        "latency": 9130
+      }
+    },
+    {
+      "name": "api with jwt auth, basic auth header",
+      "results": {
+        "rps": 9420,
+        "latency": 10750
+      }
+    },
+    {
+      "name": "api with jwt auth, bad bearer token",
+      "results": {
+        "rps": 7373,
+        "latency": 13760
+      }
+    },
+    {
+      "name": "api with jwt auth, bad signature",
+      "results": {
+        "rps": 7264,
+        "latency": 13820
+      }
+    },
+    {
+      "name": "api with jwt auth, good request",
+      "results": {
+        "rps": 4582,
+        "latency": 21910
+      }
+    }
+  ]
+}

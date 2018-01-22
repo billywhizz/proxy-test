@@ -5,10 +5,10 @@
   "scripts": {
     "setup": "sudo ./setup.sh",
     "test": "./node_modules/mocha/bin/mocha --reporter spec --bail spec.js",
-    "bench": "sudo ./bench.sh",
+    "bench": "node bench http://172.17.0.1:8000/ kong && node bench http://172.17.0.1:8200/ node",
     "report": "node process",
     "teardown": "sudo ./teardown.sh",
-    "all": "npm run setup && npm run test && npm run bench && npm run report && npm run teardown"
+    "all": "npm install && npm run setup && npm run test && npm run bench && npm run report && npm run teardown"
   },
   "author": "",
   "license": "ISC",

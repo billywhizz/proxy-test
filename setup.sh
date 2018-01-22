@@ -126,8 +126,8 @@ curl -X POST \
   http://127.0.0.1:8001/consumers/ftl.admin/jwt \
   -H 'content-type: application/json' \
   -d '{
-	"secret":"2f6768ae102b154690cf6935fd06844e",
-	"key":"cc1ea5425e6c28704275743e041d267b",
+	"secret":"c61f373bd7f74230d4d00e2a093b4282",
+	"key":"33a9ec8bfe2b5134e245c65b327b5b90",
 	"algorithm":"HS256"
 }'
 create jwt plugin

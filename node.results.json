@@ -4,57 +4,57 @@
     {
       "name": "no host specified",
       "results": {
-        "rps": 24082,
-        "latency": 4190
+        "rps": 25746,
+        "latency": 3920
       }
     },
     {
       "name": "no api found",
       "results": {
-        "rps": 29783,
-        "latency": 3420
+        "rps": 28590,
+        "latency": 3490
       }
     },
     {
       "name": "api with no plugins",
       "results": {
-        "rps": 8011,
-        "latency": 12480
+        "rps": 8797,
+        "latency": 11380
       }
     },
     {
       "name": "api with jwt auth, no auth header",
       "results": {
-        "rps": 16634,
-        "latency": 6020
+        "rps": 18446,
+        "latency": 5420
       }
     },
     {
       "name": "api with jwt auth, basic auth header",
       "results": {
-        "rps": 16412,
-        "latency": 6110
+        "rps": 17657,
+        "latency": 5660
       }
     },
     {
       "name": "api with jwt auth, bad bearer token",
       "results": {
-        "rps": 16190,
-        "latency": 6190
+        "rps": 17552,
+        "latency": 5690
       }
     },
     {
       "name": "api with jwt auth, bad signature",
       "results": {
-        "rps": 11841,
-        "latency": 8450
+        "rps": 12264,
+        "latency": 8150
       }
     },
     {
       "name": "api with jwt auth, good request",
       "results": {
-        "rps": 5554,
-        "latency": 18010
+        "rps": 6782,
+        "latency": 14730
       }
     }
   ]

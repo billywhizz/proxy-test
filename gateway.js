@@ -4,7 +4,7 @@ const { inherits } = require('util')
 
 const rx = /Bearer (.+)/
 const JWTS = {
-	'cc1ea5425e6c28704275743e041d267b:HS256': '2f6768ae102b154690cf6935fd06844e'
+	'33a9ec8bfe2b5134e245c65b327b5b90:HS256': 'c61f373bd7f74230d4d00e2a093b4282'
 }
 const algorithmMap = {
 	HS256: 'sha256',

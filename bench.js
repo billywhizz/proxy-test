@@ -60,8 +60,9 @@ async function run(url) {
 	results.push({ name: 'api with jwt auth, no auth header', results: await wrk(url, ['Host: ftl.admin']) })
 	results.push({ name: 'api with jwt auth, basic auth header', results: await wrk(url, ['Host: ftl.admin', 'Authorization: Basic abc123']) })
 	results.push({ name: 'api with jwt auth, bad bearer token', results: await wrk(url, ['Host: ftl.admin', 'Authorization: Bearer abc123']) })
-	results.push({ name: 'api with jwt auth, bad signature', results: await wrk(url, ['Host: ftl.admin', 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoSWQiOiI1NmEyNDg0NWIzZWZiOTExMDA0NjExNWIiLCJpc3MiOiJjYzFlYTU0MjVlNmMyODcwNDI3NTc0M2UwNDFkMjY3YiIsImV4cCI6MTUxNTcwMTE4OTUwOH0.Gle0SBTEbJF43CxxlfHK9nc_du30N7A5lJqH1zw8EQs']) })
-	results.push({ name: 'api with jwt auth, good request', results: await wrk(url, ['Host: ftl.admin', 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoSWQiOiI1NmEyNDg0NWIzZWZiOTExMDA0NjExNWIiLCJpc3MiOiJjYzFlYTU0MjVlNmMyODcwNDI3NTc0M2UwNDFkMjY3YiIsImV4cCI6MTUxNTcwMTE4OTUwOH0.8WjcYwrKVxH-UIALij5BnINPvUeP7hcGFZv5hMcrqHQ']) })
+	results.push({ name: 'api with jwt auth, bad signature', results: await wrk(url, ['Host: ftl.admin', 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoSWQiOiI1NmEyNDg0NWIzZWZiOTExMDA0NjExNWIiLCJpc3MiOiIzM2E5ZWM4YmZlMmI1MTM0ZTI0NWM2NWIzMjdiNWI5MCIsImV4cCI6MTU0NjMwMDgwMDAwMH0.twRo3KLP2VcI_E8RoWuYN0HdNtQ3vUiAgmDgYVnR2uE']) })
+	results.push({ name: 'api with jwt auth, good request', results: await wrk(url, ['Host: ftl.admin', 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoSWQiOiI1NmEyNDg0NWIzZWZiOTExMDA0NjExNWIiLCJpc3MiOiIzM2E5ZWM4YmZlMmI1MTM0ZTI0NWM2NWIzMjdiNWI5MCIsImV4cCI6MTU0NjMwMDgwMDAwMH0.YJy1hXN58oa_czq13PEv5i6mR40jxATeShgeNjrNMk8']) })
+
 	return { url, results }
 }
 

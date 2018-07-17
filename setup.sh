@@ -5,6 +5,7 @@ export POSTGRES_USER="kong"
 export POSTGRES_DB="kong"
 export KONG_PG_HOST="kongdb"
 export DEMO_HOME=$(pwd)
+export KONG_VERSION="kong:0.14.0-alpine"
 echo stop and remove services
 docker stop kong12 1>/dev/null 2>&1
 docker stop kong-12-db 1>/dev/null 2>&1
@@ -20,7 +21,7 @@ docker run -it --rm \
 	-v $DEMO_HOME:/source \
 	--workdir /source \
 	-p 3000:3000 \
-	crystallang/crystal:0.24.1 \
+	crystallang/crystal:latest \
 	crystal build --no-debug --release backend.cr
 echo start backend server
 docker run -d \
@@ -39,7 +40,7 @@ docker run -d \
 	node:8-slim \
 	node gateway
 echo build docker kong image
-docker build -t kong12 .
+#docker build -t kong12 .
 echo start postgres database
 docker run -d \
 	--name kong-12-db \
@@ -47,7 +48,7 @@ docker run -d \
 	-e "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" \
 	-e "POSTGRES_USER=$POSTGRES_USER" \
 	-e "POSTGRES_DB=$POSTGRES_DB" \
-	postgres:9.4
+	postgres:9.5
 echo sleep for 5 seconds...
 sleep 5
 echo setup kong database
@@ -58,7 +59,7 @@ docker run --rm --link kong-12-db:$KONG_PG_HOST \
 	-e "KONG_PG_USER=$POSTGRES_USER" \
 	-e "KONG_PG_PASSWORD=$POSTGRES_PASSWORD" \
 	-e "KONG_PG_DATABASE=$POSTGRES_DB" \
-	kong12 \
+	$KONG_VERSION \
 	kong migrations up
 echo sleep for 5 seconds...
 sleep 5
@@ -98,7 +99,7 @@ docker run -d \
 	-e "KONG_LOG_LEVEL=error" \
 	-p 8000:8000 \
 	-p 8001:8001 \
-	kong12 \
+	$KONG_VERSION \
 	kong start
 echo sleep for 5 seconds...
 sleep 5

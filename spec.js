@@ -46,7 +46,7 @@ describe('test kong api', () => {
 		res.headers['content-type'].should.equal('application/json; charset=utf-8')
 		const body = JSON.parse(res.text)
 		body.should.have.properties(['message'])
-		body.message.should.equal('no API found with those values')
+		body.message.should.equal('no route and no API found with those values')
 	})
 
 	it('should get a 404 not found with unsupported host header', async () => {
@@ -64,7 +64,7 @@ describe('test kong api', () => {
 		res.headers['content-type'].should.equal('application/json; charset=utf-8')
 		const body = JSON.parse(res.text)
 		body.should.have.properties(['message'])
-		body.message.should.equal('no API found with those values')
+		body.message.should.equal('no route and no API found with those values')
 	})
 
 	it('should get a 200 OK for api with no plugins', async () => {
@@ -78,7 +78,7 @@ describe('test kong api', () => {
 		res.statusMessage.should.equal('OK')
 		res.headers.should.have.properties(['content-length', 'connection'])
 		res.headers.connection.should.equal('close')
-		res.headers['content-length'].should.equal('0')
+		res.headers['content-length'].should.equal('12')
 	})
 
 	it('should get a 401 not authorized with no auth header', async () => {
@@ -164,7 +164,7 @@ describe('test kong api', () => {
 		res.statusMessage.should.equal('OK')
 		res.headers.should.have.properties(['content-length', 'connection'])
 		res.headers.connection.should.equal('close')
-		res.headers['content-length'].should.equal('0')
+		res.headers['content-length'].should.equal('12')
 	})
 
 })
@@ -221,7 +221,7 @@ describe('test gateway', () => {
 		res.statusMessage.should.equal('OK')
 		res.headers.should.have.properties(['content-length', 'connection'])
 		res.headers.connection.should.equal('close')
-		res.headers['content-length'].should.equal('0')
+		res.headers['content-length'].should.equal('12')
 	})
 
 	it('should get a 401 not authorized with no auth header', async () => {
@@ -307,7 +307,7 @@ describe('test gateway', () => {
 		res.statusMessage.should.equal('OK')
 		res.headers.should.have.properties(['content-length', 'connection'])
 		res.headers.connection.should.equal('close')
-		res.headers['content-length'].should.equal('0')
+		res.headers['content-length'].should.equal('12')
 	})
 
 })

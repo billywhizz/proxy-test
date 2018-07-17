@@ -4,57 +4,81 @@
     {
       "name": "no host specified",
       "results": {
-        "rps": 19229,
-        "latency": 5400
+        "rps": 18416,
+        "latency": 5470,
+        "statuses": {
+          "404": 553210
+        }
       }
     },
     {
       "name": "no api found",
       "results": {
-        "rps": 20400,
-        "latency": 5000
+        "rps": 19125,
+        "latency": 5220,
+        "statuses": {
+          "404": 574380
+        }
       }
     },
     {
       "name": "api with no plugins",
       "results": {
-        "rps": 8760,
-        "latency": 11500
+        "rps": 9593,
+        "latency": 10450,
+        "statuses": {
+          "200": 288252
+        }
       }
     },
     {
       "name": "api with jwt auth, no auth header",
       "results": {
-        "rps": 9481,
-        "latency": 10720
+        "rps": 12821,
+        "latency": 7910,
+        "statuses": {
+          "401": 384898
+        }
       }
     },
     {
       "name": "api with jwt auth, basic auth header",
       "results": {
-        "rps": 8963,
-        "latency": 11390
+        "rps": 11637,
+        "latency": 8660,
+        "statuses": {
+          "401": 349465
+        }
       }
     },
     {
       "name": "api with jwt auth, bad bearer token",
       "results": {
-        "rps": 7180,
-        "latency": 14160
+        "rps": 9068,
+        "latency": 11130,
+        "statuses": {
+          "401": 272309
+        }
       }
     },
     {
       "name": "api with jwt auth, bad signature",
       "results": {
-        "rps": 7025,
-        "latency": 14380
+        "rps": 8026,
+        "latency": 12560,
+        "statuses": {
+          "403": 241008
+        }
       }
     },
     {
       "name": "api with jwt auth, good request",
       "results": {
-        "rps": 4499,
-        "latency": 22340
+        "rps": 5237,
+        "latency": 19070,
+        "statuses": {
+          "200": 157290
+        }
       }
     }
   ]

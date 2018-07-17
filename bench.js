@@ -6,7 +6,7 @@ const writeFileAsync = promisify(writeFile)
 
 function wrk(url = 'http://172.17.0.1:8000/', headers = []) {
 	const args = [''].concat((headers || []).map(h => `'${h}'`)).join(' -H ')
-	const script = `sudo docker run -t --rm williamyeh/wrk -c 100 -t 2 -d 30 ${args} ${url}`
+	const script = `docker run -t -v ${__dirname}/bench2.lua:/bench.lua --rm williamyeh/wrk -s /bench.lua -c 100 -t 2 -d 30 ${args} ${url}`
 	return new Promise((ok, fail) => {
 		const child = spawn('/bin/sh', ['-c', script])
 		const output = []
@@ -47,7 +47,21 @@ function wrk(url = 'http://172.17.0.1:8000/', headers = []) {
 			if (match && match.length > 1) {
 				rps = parseInt(match[1], 10)
 			}
-			ok({ rps, latency })
+			const lines = out.split('\n')
+			const statuses = {}
+			for (const line of lines) {
+				const parts = line.match(/Thread: (\d), (\d+): (\d+)\r/)
+				if (parts && parts.length > 2) {
+					const [, tid, status, count] = parts
+					if (statuses[status]) {
+						statuses[status] += parseInt(count, 10)
+					} else {
+						statuses[status] = parseInt(count, 10)
+					}
+				}
+			}
+			console.dir({ rps, latency, statuses })
+			ok({ rps, latency, statuses })
 		})
 	})
 }
